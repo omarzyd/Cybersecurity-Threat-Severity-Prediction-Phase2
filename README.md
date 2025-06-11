@@ -123,7 +123,7 @@ Even though we didn’t win, we gained deep experience in:
 
 Our team consisted of four members:
 
-- **Malak** 🧪 – Data cleaning, preprocessing, feature scaling *Malakk810*
+- **Malak** 🧪 – Data cleaning, preprocessing, feature scaling
 - **Azza** 📊 – Exploratory Data Analysis, feature engineering, visualization  
 - **Farida** 🤖 – Model training, validation, ensemble development  
 - **Omar (me)** ⚙️ – Hyperparameter tuning, model optimization, final pipeline assembly
