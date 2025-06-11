@@ -81,7 +81,6 @@ Each model was tuned using:
 
 We created a final ensemble model by blending our top three:
 
-```python
 final_prediction = (
     0.5 * lightgbm_preds +
     0.3 * catboost_preds +
