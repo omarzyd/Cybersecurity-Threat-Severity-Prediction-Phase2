@@ -1,6 +1,6 @@
 # 🔐 Cybersecurity Threat Severity Prediction — Phase 2 (Kaggle-Style Competition)
 
-> 🏁 _"Not just a machine learning project its a race for accuracy."
+> 🏁 "Not just a machine learning project its a race for accuracy."
 
 This was the second and most intense phase of our Machine Learning course at Zewail City.  
 We participated in a **Kaggle-style competition**, where teams were given a shared training set and a **test set with hidden labels**. The twist?  
