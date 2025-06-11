@@ -123,14 +123,14 @@ Even though we didn’t win, we gained deep experience in:
 
 Our team consisted of four members:
 
-- **Malak** 🧪 – Data cleaning, preprocessing, feature scaling  
+- **Malak** 🧪 – Data cleaning, preprocessing, feature scaling *Malakk810*
 - **Azza** 📊 – Exploratory Data Analysis, feature engineering, visualization  
 - **Farida** 🤖 – Model training, validation, ensemble development  
 - **Omar (me)** ⚙️ – Hyperparameter tuning, model optimization, final pipeline assembly
 
 We divided the work across two tracks:
-- **Preprocessing & EDA**: Malak and Farida
-- **Modeling & Tuning**: Azza and Omar
+- **Preprocessing & EDA**: Malak and Azza
+- **Modeling & Tuning**: Farida and Omar
 
 Throughout the project, we collaborated via shared notebooks, coordinated submissions, and cross-reviewed each other's contributions to ensure a robust and unified pipeline.
 
