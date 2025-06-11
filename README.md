@@ -1,75 +1,163 @@
 # 🔐 Cybersecurity Threat Severity Prediction — Phase 2 (Kaggle-Style Competition)
 
-> 🏁 _"Not just a machine learning project — a race to the top."_
+> 🏁 _"Not just a machine learning project its a race for accuracy."
 
-This was the second and most intense phase of our CSAI 253 Machine Learning course at Zewail City.  
-We participated in a **Kaggle-style competition** where teams trained ML models on a shared training set and submitted predictions on a **private test set without labels**. The coordinator alone had the ground truth and returned scores after each submission.
+This was the second and most intense phase of our Machine Learning course at Zewail City.  
+We participated in a **Kaggle-style competition**, where teams were given a shared training set and a **test set with hidden labels**. The twist?  
+**You don’t get to evaluate your model** — only the instructor holds the test labels.
 
-For two weeks, it was a fierce, model-driven battle. Teams competed daily — tuning, submitting, and racing to reach the **lowest RMSE**. Submissions were blind. Feedback was slow. And every percentage point counted.
+We trained, predicted, and submitted our results blindly. The coordinator returned a single number: **accuracy**.  
+And the team with the highest accuracy… **won**.
 
 ---
 
 ## 🎯 Problem Statement
 
-Build a regression model that predicts the **severity of cybersecurity threats** using real-world telemetry and system data.
+We were challenged to build a regression model that predicts the **severity of cybersecurity threats** based on system/network telemetry.
 
-- You train on: `train.csv` with labeled threat scores.
-- You predict on: `test.csv` without labels.
-- You submit predictions to the coordinator.
-- You get back: **RMSE score** only.
-
-The team with the **lowest test RMSE** wins.
+- You train your model on a labeled dataset.
+- You predict on an unlabeled test dataset.
+- You submit your predictions.
+- The instructor returns an **accuracy score**.
+- The team with the **highest accuracy wins**.
 
 ---
 
 ## 🗂️ Dataset Overview
 
-- ~50+ features: numerical + categorical, no context provided
-- Target: continuous severity score
-- Real-world structure: noise, outliers, missing data, feature drift
+- Input: ~50 features (categorical + numerical, many unnamed)
+- Target: continuous score representing threat severity
+- Provided: `train.csv` (with `y_train`) and `test.csv` (without `y_test`)
+- Ground truth for test set was only known to the instructor
+
+---
+
+## ⚔️ The Competition Format
+
+- Each team had access to the same training and test files.
+- No team knew the actual test labels.
+- We submitted `.csv` prediction files to the instructor.
+- We received back a **single float** our **accuracy score**.
+- **Leaderboards changed daily.** Everyone iterated until the deadline.
+
+> 🧠 Every prediction mattered. Every point counted.  
+> 📈 We tuned, ensembled, and experimented until the final minutes.
 
 ---
 
 ## 🧪 Our Approach
 
-### 🔹 1. Data Cleaning & Preprocessing
-
-- Imputed missing values (median/mode)
-- Encoded categoricals (label + one-hot encoding)
-- Standardized and scaled numerical features
-- Visualized distributions, outliers, skewness
-- Selected top features via:
-  - Correlation analysis
-  - Tree-based importance (RF/XGB)
+### 🔹 1. Data Preprocessing
+- Missing value imputation
+- Label + one-hot encoding for categorical features
+- Standard scaling and MinMax scaling
+- Feature selection via:
+  - Correlation matrix
+  - Feature importance from tree models
   - Recursive Feature Elimination (RFE)
 
 ---
 
-### 🔹 2. Modeling & Evaluation
+### 🔹 2. Models We Trained
 
-We experimented with:
+| Model         | Description |
+|---------------|-------------|
+| Linear Regression | Simple baseline |
+| Ridge/Lasso    | Regularization, less overfitting |
+| Random Forest  | Strong out-of-the-box |
+| **XGBoost**    | Excellent performance, fine-tuned |
+| **LightGBM**   | Fastest with great accuracy |
+| **CatBoost**   | Best with categorical data |
+| **Ensemble**   | Final model – weighted average of top 3 |
 
-- **Linear Regression** (baseline)
-- **Ridge / Lasso** (regularization)
-- **Random Forest** (robust nonlinear model)
-- **XGBoost** (high accuracy, flexible)
-- **LightGBM** (fastest with high performance)
-- **CatBoost** (best with categoricals)
-
-We used:
-- 5-fold Cross Validation
-- Optuna for hyperparameter tuning (~200 trials per model)
-- RMSE as primary metric (Kaggle standard)
-- MAE and R² for internal validation
-- Residual analysis and prediction drift visualization
+Each model was tuned using:
+- 5-fold cross-validation on training data
+- **Optuna** for automated hyperparameter optimization
+- Accuracy tracked on validation sets
 
 ---
 
-### 🔹 3. Final Ensemble
+## 🌟 Final Submission Strategy
+
+We created a final ensemble model by blending our top three:
 
 ```python
 final_prediction = (
-    0.5 * lgbm_preds +
+    0.5 * lightgbm_preds +
     0.3 * catboost_preds +
-    0.2 * xgb_preds
+    0.2 * xgboost_preds
 )
+
+---
+## 📈 Model Performance (Local CV Accuracy)
+
+> ⚠️ Note: These are cross-validation results on the training data.  
+> The actual ranking was based on **test accuracy** provided by the instructor on the hidden test set.
+
+| Model         | CV Accuracy |
+|---------------|-------------|
+| LightGBM      | 92.1%       |
+| CatBoost      | 91.8%       |
+| XGBoost       | 91.5%       |
+| **Ensemble**  | **92.7%** ✅ |
+
+Our final ensemble was built by blending predictions from LightGBM, CatBoost, and XGBoost with optimized weights.
+
+---
+
+## 🤔 Reflections
+
+This challenge was more than a project — it was a **real-world simulation** of:
+- Blind model evaluation
+- Hyperparameter tuning under pressure
+- Competitive ML teamwork
+- Dealing with feedback delays and uncertainty
+
+Even though we didn’t win, we gained deep experience in:
+- Building robust pipelines
+- Understanding model generalization
+- Thinking like practitioners, not just students
+
+---
+
+## 👥 Team Collaboration
+
+We worked as a team of four, dividing responsibilities to maximize parallel progress:
+
+- 🧪 **Two members focused on data preprocessing and EDA**
+  - Cleaning missing values and outliers
+  - Encoding and scaling features
+  - Visualizing trends and distributions
+  - Feature selection and engineering
+
+- 🤖 **Two members focused on modeling and tuning**
+  - Training and evaluating ML models
+  - Implementing ensemble strategies
+  - Hyperparameter tuning using Optuna
+  - Preparing final submission pipelines
+
+We collaborated continuously through shared notebooks and code reviews, ensuring consistency across the workflow.
+
+> 🧠 Every submission reflected **collective strategy, review, and iteration** — not siloed work.
+
+---
+
+## 🏆 Competition Results
+
+At the end of the challenge, the instructor revealed the **official leaderboard**, ranking all teams by their accuracy on the hidden test set.
+
+> 📌 Our team, **TeamML**, achieved a final test accuracy of **91.6653%**, placing us **9th overall** in a highly competitive field.
+
+The gap between the top and our position was narrow, less than **0.003 in accuracy**. It was a race of fine-tuning, experimentation, and resilience.
+
+![image](https://github.com/user-attachments/assets/79ffaca6-6df9-48e1-9b05-ffa29eb7c2b8)
+
+Even though we didn’t land at the very top, we pushed our models to the limit, explored diverse strategies, and came away with **battle-tested skills** in:
+- Blind evaluation
+- Ensemble modeling
+- Hyperparameter tuning
+- High-pressure iteration
+
+This wasn’t just a class project, it was a simulation of **real-world model deployment** under uncertainty.
+
+---
