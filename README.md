@@ -121,23 +121,20 @@ Even though we didn’t win, we gained deep experience in:
 
 ## 👥 Team Collaboration
 
-We worked as a team of four, dividing responsibilities to maximize parallel progress:
+Our team consisted of four members:
 
-- 🧪 **Two members focused on data preprocessing and EDA**
-  - Cleaning missing values and outliers
-  - Encoding and scaling features
-  - Visualizing trends and distributions
-  - Feature selection and engineering
+- **Malak** 🧪 – Data cleaning, preprocessing, feature scaling  
+- **Azza** 📊 – Exploratory Data Analysis, feature engineering, visualization  
+- **Farida** 🤖 – Model training, validation, ensemble development  
+- **Omar (me)** ⚙️ – Hyperparameter tuning, model optimization, final pipeline assembly
 
-- 🤖 **Two members focused on modeling and tuning**
-  - Training and evaluating ML models
-  - Implementing ensemble strategies
-  - Hyperparameter tuning using Optuna
-  - Preparing final submission pipelines
+We divided the work across two tracks:
+- **Preprocessing & EDA**: Malak and Farida
+- **Modeling & Tuning**: Azza and Omar
 
-We collaborated continuously through shared notebooks and code reviews, ensuring consistency across the workflow.
+Throughout the project, we collaborated via shared notebooks, coordinated submissions, and cross-reviewed each other's contributions to ensure a robust and unified pipeline.
 
-> 🧠 Every submission reflected **collective strategy, review, and iteration** — not siloed work.
+> 💬 _"Every improvement in accuracy was a result of shared effort and constant iteration."_  
 
 ---
 
